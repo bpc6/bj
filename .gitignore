@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# IntilliJ
+/.idea
+
+# Build and third_party
+/*build*
