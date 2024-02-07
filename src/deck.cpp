@@ -1,6 +1,7 @@
 #include "deck.h"
 
 #include <algorithm>
+#include <chrono>
 #include <stdexcept>
 
 using Suit = Card::Suit;
