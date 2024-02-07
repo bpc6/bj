@@ -1,14 +1,19 @@
 #ifndef BLACKJACK_DECK_H
 #define BLACKJACK_DECK_H
 
+#include <vector>
+
 #include "card.h"
 
 class Deck {
-  Card card;
+  std::vector<Card> cards;
 
  public:
-  explicit Deck(const Card& card);
-  int getValue() const;
+  Deck();
+  void shuffle();
+  Card& pop();
+  Card& peek();
+  void newDeckOrder();
 };
 
 #endif  // BLACKJACK_DECK_H

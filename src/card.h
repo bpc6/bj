@@ -4,8 +4,8 @@
 struct Card {
   enum Suit { HEART, DIAMOND, SPADE, CLUB };
 
-  Suit suit;
-  int value;
+  const Suit suit;
+  const int value;
 };
 
 #endif  // BLACKJACK_CARD_H
