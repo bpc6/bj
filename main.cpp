@@ -1,6 +1,9 @@
 #include <iostream>
 
+#include "src/card.h"
+
 int main() {
-  std::cout << "hello world" << std::endl;
+  Card card{Card::Suit::DIAMOND, 4};
+  std::cout << "card is " << card.value << " of " << card.suit << std::endl;
   return 0;
 }
