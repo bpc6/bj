@@ -1,5 +1,6 @@
 #include "deck.h"
 
+#include <algorithm>
 #include <stdexcept>
 
 using Suit = Card::Suit;
@@ -10,7 +11,7 @@ Deck::Deck(const std::initializer_list<Card>& someCards) : cards(someCards) {}
 
 int Deck::size() { return static_cast<int>(cards.size()); }
 
-void Deck::shuffle() {}
+void Deck::shuffle() { std::shuffle(std::begin(cards), std::end(cards), rng); }
 
 void Deck::sort() {}
 
@@ -29,12 +30,12 @@ void Deck::newDeckOrder() {
   cards.clear();
   for (Suit suit : {Suit::SPADE, Suit::CLUB}) {
     for (int i = 1; i <= 13; i++) {
-      cards.emplace_back(Card{suit, i});
+      cards.emplace_back(suit, i);
     }
   }
   for (Suit suit : {Suit::DIAMOND, Suit::HEART}) {
     for (int i = 13; i > 0; i--) {
-      cards.emplace_back(Card{suit, i});
+      cards.emplace_back(suit, i);
     }
   }
 }

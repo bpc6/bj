@@ -1,12 +1,14 @@
 #ifndef BLACKJACK_DECK_H
 #define BLACKJACK_DECK_H
 
+#include <random>
 #include <vector>
 
 #include "card.h"
 
 class Deck {
   std::vector<Card> cards;
+  std::default_random_engine rng;
 
  public:
   Deck();

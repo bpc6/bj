@@ -1,4 +1,4 @@
-add_library(Cardgame deck.cpp)
+add_library(Cardgame card.cpp deck.cpp)
 
 add_executable(bj main.cpp)
 

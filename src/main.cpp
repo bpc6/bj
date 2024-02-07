@@ -5,9 +5,9 @@
 
 int main() {
   Card card{Card::Suit::DIAMOND, 4};
-  std::cout << "card is " << card.value << " of " << card.suit << std::endl;
+  std::cout << "card is " << card.getValue() << " of " << card.getSuit() << std::endl;
 
   Deck deck;
-  std::cout << "deck's card has value " << deck.peek().value << std::endl;
+  std::cout << "deck's card has value " << deck.peek().getValue() << std::endl;
   return 0;
 }
