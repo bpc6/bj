@@ -41,3 +41,11 @@ void Deck::newDeckOrder() {
 long Deck::epochTicks() {
   return std::chrono::high_resolution_clock::now().time_since_epoch().count();
 }
+
+void Deck::push(Card card) { cards.push_back(card); }
+
+Deck Deck::operator+(const Deck& other) const {
+  Deck combinedDeck(*this);
+  combinedDeck.cards.insert(combinedDeck.cards.end(), other.cards.begin(), other.cards.end());
+  return combinedDeck;
+}

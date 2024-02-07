@@ -21,7 +21,8 @@ class Deck {
   Card& pop();
   Card& peek();
   void newDeckOrder();
-  void sort();
+  void push(Card card);
+  Deck operator+(const Deck& other) const;
 };
 
 #endif  // BLACKJACK_DECK_H

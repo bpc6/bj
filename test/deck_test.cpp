@@ -62,3 +62,24 @@ TEST(DeckTest, Shuffle) {
   deck.shuffle();
   EXPECT_NE(deck.peek().getValue(), 1);
 }
+
+TEST(DeckTest, Push) {
+  Deck deck{Card{Card::DIAMOND, 4}};
+  deck.push(Card{Card::SPADE, 12});
+
+  EXPECT_EQ(deck.peek().getValue(), 12);
+  EXPECT_EQ(deck.size(), 2);
+}
+
+TEST(DeckTest, CombineDecks) {
+  Deck deck1{Card{Card::DIAMOND, 4}};
+  Deck deck2{Card{Card::SPADE, 12}, Card{Card::DIAMOND, 11}};
+
+  Deck combined = deck1 + deck2;
+  EXPECT_EQ(combined.pop().getValue(), 11);
+  EXPECT_EQ(combined.pop().getValue(), 12);
+  EXPECT_EQ(combined.pop().getValue(), 4);
+  EXPECT_EQ(combined.size(), 0);
+}
+
+TEST(DeckTest, CombineNewDecks) { EXPECT_EQ((Deck() + Deck()).size(), 52 + 52); }
