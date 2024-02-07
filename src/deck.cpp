@@ -11,9 +11,7 @@ Deck::Deck(const std::initializer_list<Card>& someCards) : cards(someCards), rng
 
 int Deck::size() { return static_cast<int>(cards.size()); }
 
-void Deck::shuffle() { std::shuffle(std::begin(cards), std::end(cards), rng); }
-
-void Deck::sort() {}
+void Deck::shuffle() { std::shuffle(cards.begin(), cards.end(), rng); }
 
 Card& Deck::pop() {
   Card& back = peek();

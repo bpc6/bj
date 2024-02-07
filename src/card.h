@@ -3,7 +3,7 @@
 
 class Card {
  public:
-  enum Suit { HEART, DIAMOND, SPADE, CLUB };
+  enum Suit { SPADE, CLUB, DIAMOND, HEART };
   Card(Suit suit, int value);
   [[nodiscard]] Suit getSuit() const;
   [[nodiscard]] int getValue() const;
