@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "src/card.h"
+#include "card.h"
 
 int main() {
   Card card{Card::Suit::DIAMOND, 4};
