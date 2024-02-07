@@ -1,6 +1,7 @@
 #ifndef BLACKJACK_DECK_H
 #define BLACKJACK_DECK_H
 
+#include <chrono>
 #include <random>
 #include <vector>
 
@@ -9,6 +10,8 @@
 class Deck {
   std::vector<Card> cards;
   std::default_random_engine rng;
+
+  static long epochTicks();
 
  public:
   Deck();

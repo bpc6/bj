@@ -5,9 +5,9 @@
 
 using Suit = Card::Suit;
 
-Deck::Deck() { newDeckOrder(); }
+Deck::Deck() : rng(epochTicks()) { newDeckOrder(); }
 
-Deck::Deck(const std::initializer_list<Card>& someCards) : cards(someCards) {}
+Deck::Deck(const std::initializer_list<Card>& someCards) : cards(someCards), rng(epochTicks()) {}
 
 int Deck::size() { return static_cast<int>(cards.size()); }
 
@@ -38,4 +38,8 @@ void Deck::newDeckOrder() {
       cards.emplace_back(suit, i);
     }
   }
+}
+
+long Deck::epochTicks() {
+  return std::chrono::high_resolution_clock::now().time_since_epoch().count();
 }
