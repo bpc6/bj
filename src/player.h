@@ -7,6 +7,7 @@ class Player {
   std::string username;
 
  public:
+  explicit Player(const std::string& usr);
   bool operator<(const Player& rhs) const;
 };
 

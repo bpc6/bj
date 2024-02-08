@@ -1,10 +1,7 @@
 #include "bj_player.h"
 
-void BJPlayer::initializeRound(Card& c0, Card& c1) {
-  placeBet();
-  takeCard(c0);
-  takeCard(c1);
-}
+BJPlayer::BJPlayer(const std::string& usr, int cash) : Player(usr), cash(cash) {}
+
 void BJPlayer::takeCard(const Card& c) {
   updateScore(c.getValue());
   cards.push_back(c);
@@ -19,4 +16,11 @@ void BJPlayer::updateScore(int val) {
   }
 }
 int BJPlayer::getScore() const { return score; }
-int BJPlayer::bust() { return 0; }
+bool BJPlayer::bust() const { return score > MAX_SCORE; }
+int BJPlayer::cashOnHand() const { return cash; }
+int BJPlayer::loseBet() {
+  int lostBet = bet;
+  bet = 0;
+  cash -= lostBet;
+  return lostBet;
+}
