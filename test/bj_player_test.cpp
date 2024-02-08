@@ -1,10 +1,9 @@
-#include "bj_player.h"
-
+#include "bj_careful_player.h"
 #include "card.h"
 #include "gtest/gtest.h"
 
 TEST(BJPlayerTest, BasicScore) {
-  BJPlayer player;
+  BJCarefulPlayer player;
   EXPECT_EQ(player.getScore(), 0);
 
   player.takeCard(Card{Card::HEART, 4});
@@ -12,14 +11,14 @@ TEST(BJPlayerTest, BasicScore) {
 }
 
 TEST(BJPlayerTest, FaceCard) {
-  BJPlayer player;
+  BJCarefulPlayer player;
 
   player.takeCard(Card{Card::HEART, 12});
   EXPECT_EQ(player.getScore(), 10);
 }
 
 TEST(BJPlayerTest, AceIs1) {
-  BJPlayer player;
+  BJCarefulPlayer player;
 
   player.takeCard(Card{Card::HEART, 12});
   player.takeCard(Card{Card::HEART, 8});
@@ -28,7 +27,7 @@ TEST(BJPlayerTest, AceIs1) {
 }
 
 TEST(BJPlayerTest, AceIs11) {
-  BJPlayer player;
+  BJCarefulPlayer player;
 
   player.takeCard(Card{Card::HEART, 8});
   player.takeCard(Card{Card::HEART, 1});

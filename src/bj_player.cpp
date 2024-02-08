@@ -20,5 +20,3 @@ void BJPlayer::updateScore(int val) {
 }
 int BJPlayer::getScore() const { return score; }
 int BJPlayer::bust() { return 0; }
-void BJPlayer::placeBet() { bet = 0; }  // TODO make pure virtual and fake for testing
-bool BJPlayer::hit() { return false; }  // TODO same
