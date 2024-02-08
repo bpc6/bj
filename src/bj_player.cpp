@@ -18,9 +18,9 @@ void BJPlayer::updateScore(int val) {
 int BJPlayer::getScore() const { return score; }
 bool BJPlayer::bust() const { return score > MAX_SCORE; }
 int BJPlayer::cashOnHand() const { return cash; }
-int BJPlayer::loseBet() {
-  int lostBet = bet;
+int BJPlayer::payout(float factor) {
+  int earned = static_cast<int>(factor * static_cast<float>(bet));
   bet = 0;
-  cash -= lostBet;
-  return lostBet;
+  cash += earned;
+  return -earned;
 }

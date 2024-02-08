@@ -9,7 +9,7 @@
 class BJCarefulPlayer : public BJPlayer {
  public:
   BJCarefulPlayer(const std::string& usr, int cash) : BJPlayer(usr, cash) {}
-  void placeBet() override { bet = 1; }
+  void placeBet() override { bet = 2; }
   bool hit() override { return false; }
 };
 
@@ -45,9 +45,23 @@ TEST(BJPlayerTest, AceIs11) {
   EXPECT_EQ(player.getScore(), 19);
 }
 
-TEST(BJPlayerTest, LoseBetAfterBust) {
+TEST(BJPlayerTest, LoseBet) {
   BJCarefulPlayer player{"usr", 10};
   player.placeBet();
-  EXPECT_EQ(player.loseBet(), 1);  // careful player always bets 1
-  EXPECT_EQ(player.cashOnHand(), 9);
+  EXPECT_EQ(player.payout(-1), 2);  // careful player always bets 2
+  EXPECT_EQ(player.cashOnHand(), 8);
+}
+
+TEST(BJPlayerTest, WinBet) {
+  BJCarefulPlayer player{"usr", 10};
+  player.placeBet();
+  EXPECT_EQ(player.payout(1), -2);
+  EXPECT_EQ(player.cashOnHand(), 12);
+}
+
+TEST(BJPlayerTest, WinOnBJ) {
+  BJCarefulPlayer player{"usr", 10};
+  player.placeBet();
+  EXPECT_EQ(player.payout(1.5), -3);  // 1.5 * player's bet of 2
+  EXPECT_EQ(player.cashOnHand(), 13);
 }
