@@ -2,7 +2,7 @@ set(CARDGAME_SOURCES
         card.cpp
         deck.cpp
         player.cpp
-#        bj_game.cpp
+        bj_game.cpp
         bj_player.cpp
         game.cpp
 )
