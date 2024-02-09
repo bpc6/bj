@@ -1,6 +1,7 @@
 #include "bj_game.h"
 
 #include <memory>
+#include <utility>
 
 void BJGame::playRound() {
   //  Deck deck;
@@ -20,5 +21,7 @@ void BJGame::playRound() {
   //    }
   //  }
 }
+BJGame::BJGame(int houseMoney, Deck deck) : houseMoney(houseMoney), deck(std::move(deck)) {}
 void BJGame::addPlayer(const std::shared_ptr<BJPlayer>& p) { Game::addPlayer(p); }
 void BJGame::removePlayer(const std::shared_ptr<BJPlayer>& p) { Game::removePlayer(p); }
+void BJGame::playGame() {}

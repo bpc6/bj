@@ -14,6 +14,7 @@ class Game {
   void addPlayer(const std::shared_ptr<Player>& p);
   void removePlayer(const std::shared_ptr<Player>& p);
   int numPlayers();
+  virtual void playGame() = 0;
 };
 
 #endif  // BLACKJACK_GAME_H

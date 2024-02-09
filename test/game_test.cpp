@@ -2,14 +2,18 @@
 
 #include "gtest/gtest.h"
 
+class FakeGame : public Game {
+  void playGame() override {}
+};
+
 TEST(GameTest, AddPlayer) {
-  Game game;
+  FakeGame game;
   game.addPlayer(std::make_shared<Player>("username"));
   EXPECT_EQ(game.numPlayers(), 1);
 }
 
 TEST(GameTest, RemovePlayer) {
-  Game game;
+  FakeGame game;
   auto playerPtr = std::make_shared<Player>("username");
   game.addPlayer(playerPtr);
 
@@ -18,7 +22,7 @@ TEST(GameTest, RemovePlayer) {
 }
 
 TEST(GameTest, RemoveWithNoPlayers) {
-  Game game;
+  FakeGame game;
   auto playerPtr = std::make_shared<Player>("username");
   ASSERT_THROW(game.removePlayer(playerPtr), std::runtime_error);
 }
