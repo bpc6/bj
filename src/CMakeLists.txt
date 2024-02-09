@@ -2,8 +2,9 @@ set(CARDGAME_SOURCES
         card.cpp
         deck.cpp
         player.cpp
-#        blackjack.cpp
+#        bj_game.cpp
         bj_player.cpp
+        game.cpp
 )
 
 add_library(Cardgame ${CARDGAME_SOURCES})
