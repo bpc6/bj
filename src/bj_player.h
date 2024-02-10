@@ -24,10 +24,10 @@ class BJPlayer : public Player {
 
   virtual void placeBet() = 0;
   virtual bool hit() = 0;
-  [[nodiscard]] bool bust() const;
   int payout(float factor);
   [[nodiscard]] int getScore() const;
   [[nodiscard]] int cashOnHand() const;
+  int playRound(Deck& deck);
 };
 
 #endif  // BLACKJACK_BJ_PLAYER_H

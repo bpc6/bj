@@ -16,11 +16,23 @@ void BJPlayer::updateScore(int val) {
   }
 }
 int BJPlayer::getScore() const { return score; }
-bool BJPlayer::bust() const { return score > MAX_SCORE; }
 int BJPlayer::cashOnHand() const { return cash; }
 int BJPlayer::payout(float factor) {
   int earned = static_cast<int>(factor * static_cast<float>(bet));
   bet = 0;
   cash += earned;
   return -earned;
+}
+
+int BJPlayer::playRound(Deck& deck) {
+  takeCard(deck.pop());
+  takeCard(deck.pop());
+
+  while (hit()) {
+    takeCard(deck.pop());
+    if (score > MAX_SCORE) {
+      return 0;
+    }
+  }
+  return score;
 }

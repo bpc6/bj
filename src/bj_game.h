@@ -8,15 +8,15 @@
 class BJGame : public Game {
   std::set<std::shared_ptr<BJPlayer>> players;
   int houseMoney;
-  Deck deck;
 
  public:
-  explicit BJGame(int houseMoney = 0, Deck deck = Deck());
+  explicit BJGame(int houseMoney = 0);
   void addPlayer(const std::shared_ptr<BJPlayer>& p);
   void removePlayer(const std::shared_ptr<BJPlayer>& p);
   void playGame() override;
 
   void playRound();
+  void playRoundWithDeck(Deck& deck);
 };
 
 #endif  // BLACKJACK_BJ_GAME_H

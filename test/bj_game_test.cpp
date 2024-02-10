@@ -2,20 +2,19 @@
 
 #include "gtest/gtest.h"
 
-class BJNHitPlayer : public BJPlayer {
-  int maxHits;
-  int numHits = 0;
-
+/**
+ * Concrete BJPlayer just for testing. Careful player always bets 1 and never hits.
+ */
+class BJCarefulPlayer : public BJPlayer {
  public:
-  BJNHitPlayer(const std::string& usr, int cash, int maxHits)
-      : BJPlayer(usr, cash), maxHits(maxHits) {}
+  BJCarefulPlayer(const std::string& usr, int cash) : BJPlayer(usr, cash) {}
   void placeBet() override { bet = 2; }
-  bool hit() override { return numHits++ < maxHits; }
+  bool hit() override { return false; }
 };
 
 TEST(BJGameTest, AddAndRemovePlayer) {
   BJGame game;
-  auto p = std::make_shared<BJNHitPlayer>("3hits", 10, 3);
+  auto p = std::make_shared<BJCarefulPlayer>("username", 10);
 
   game.addPlayer(p);
   EXPECT_EQ(game.numPlayers(), 1);
