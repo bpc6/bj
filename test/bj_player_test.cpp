@@ -53,21 +53,21 @@ TEST(BJPlayerTest, LoseBet) {
   BJNHitPlayer player{"3 hits", 10, 3};
   player.placeBet();
   EXPECT_EQ(player.payout(-1), 2);  // careful player always bets 2
-  EXPECT_EQ(player.cashOnHand(), 8);
+  EXPECT_EQ(player.getCash(), 8);
 }
 
 TEST(BJPlayerTest, WinBet) {
   BJNHitPlayer player{"3 hits", 10, 3};
   player.placeBet();
   EXPECT_EQ(player.payout(1), -2);
-  EXPECT_EQ(player.cashOnHand(), 12);
+  EXPECT_EQ(player.getCash(), 12);
 }
 
 TEST(BJPlayerTest, WinOnBJ) {
   BJNHitPlayer player{"3 hits", 10, 3};
   player.placeBet();
   EXPECT_EQ(player.payout(1.5), -3);  // 1.5 * player's bet of 2
-  EXPECT_EQ(player.cashOnHand(), 13);
+  EXPECT_EQ(player.getCash(), 13);
 }
 
 TEST(BJPlayerTest, PlayRoundDontBust) {

@@ -27,7 +27,6 @@ class BJPlayer : public Player {
   int payout(float factor);
   void resetBet();
   [[nodiscard]] int getScore() const;
-  [[nodiscard]] int cashOnHand() const;
   int playRound(Deck& deck);
   [[nodiscard]] int getCash() const;
 };
