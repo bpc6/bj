@@ -7,8 +7,9 @@ class Player {
   std::string username;
 
  public:
-  explicit Player(const std::string& usr);
+  explicit Player(std::string usr);
   bool operator<(const Player& rhs) const;
+  std::string getUsername();
 };
 
 #endif  // BLACKJACK_PLAYER_H
