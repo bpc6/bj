@@ -43,7 +43,7 @@ long Deck::epochTicks() {
   return std::chrono::high_resolution_clock::now().time_since_epoch().count();
 }
 
-void Deck::push(Card card) { cards.push_back(card); }
+void Deck::push(const Card& card) { cards.push_back(card); }
 
 Deck Deck::operator+(const Deck& other) const {
   Deck combinedDeck(*this);

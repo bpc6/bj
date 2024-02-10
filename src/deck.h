@@ -20,7 +20,7 @@ class Deck {
   Card& pop();
   Card& peek();
   void newDeckOrder();
-  void push(Card card);
+  void push(const Card& card);
   Deck operator+(const Deck& other) const;
 };
 
