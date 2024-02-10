@@ -19,7 +19,6 @@ int BJPlayer::getScore() const { return score; }
 int BJPlayer::cashOnHand() const { return cash; }
 int BJPlayer::payout(float factor) {
   int earned = static_cast<int>(factor * static_cast<float>(bet));
-  bet = 0;
   cash += earned;
   return -earned;
 }
@@ -36,3 +35,5 @@ int BJPlayer::playRound(Deck& deck) {
   }
   return score;
 }
+int BJPlayer::getCash() const { return cash; }
+void BJPlayer::resetBet() { bet = 0; }

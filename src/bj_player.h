@@ -7,16 +7,16 @@
 #include "player.h"
 
 class BJPlayer : public Player {
-  int cash = 0;
-  std::vector<Card> cards;
-  int score = 0;
-  int aceCount = 0;
   static const int MAX_SCORE = 21;
+  std::vector<Card> cards;
+  int aceCount = 0;
 
   void updateScore(int val);
 
  protected:
   int bet = 0;
+  int score = 0;
+  int cash = 0;
 
  public:
   BJPlayer(const std::string& usr, int cash);
@@ -25,9 +25,11 @@ class BJPlayer : public Player {
   virtual void placeBet() = 0;
   virtual bool hit() = 0;
   int payout(float factor);
+  void resetBet();
   [[nodiscard]] int getScore() const;
   [[nodiscard]] int cashOnHand() const;
   int playRound(Deck& deck);
+  [[nodiscard]] int getCash() const;
 };
 
 #endif  // BLACKJACK_BJ_PLAYER_H
