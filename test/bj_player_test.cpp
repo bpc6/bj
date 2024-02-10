@@ -82,7 +82,7 @@ TEST(BJPlayerTest, PlayRoundDontBust) {
 
 TEST(BJPlayerTest, PlayRoundAndBust) {
   BJNHitPlayer player{"3 hits", 10, 3};
-  // 2 of Hearts will not be used because player hits 3x and 2H is at the bottom of the deck
+  // cards taken LIFO so KS is first
   Deck noBust = {Card{Card::HEART, 2}, Card{Card::SPADE, 4}, Card{Card::CLUB, 3},
                  Card{Card::CLUB, 12}, Card{Card::SPADE, 2}, Card{Card::SPADE, 13}};
 
