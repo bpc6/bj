@@ -79,3 +79,13 @@ TEST(BJPlayerTest, PlayRoundDontBust) {
   int playerScore = player.playRound(noBust);
   EXPECT_EQ(playerScore, 13);
 }
+
+TEST(BJPlayerTest, PlayRoundAndBust) {
+  BJNHitPlayer player{"3 hits", 10, 3};
+  // 2 of Hearts will not be used because player hits 3x and 2H is at the bottom of the deck
+  Deck noBust = {Card{Card::HEART, 2}, Card{Card::SPADE, 4}, Card{Card::CLUB, 3},
+                 Card{Card::CLUB, 12}, Card{Card::SPADE, 2}, Card{Card::SPADE, 13}};
+
+  int playerScore = player.playRound(noBust);
+  EXPECT_EQ(playerScore, 0);
+}
