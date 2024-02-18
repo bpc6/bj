@@ -1,9 +1,9 @@
-#include "bj_game.h"
+#include "game.h"
 
 #include <iostream>
 #include <memory>
 
-void BJGame::playRound() {
+void Game::playRound() {
   Deck deck;
   deck.shuffle();
 
@@ -24,9 +24,9 @@ void BJGame::playRound() {
     player->resetBet();
   }
 }
-BJGame::BJGame(int houseMoney) : dealer(BJDealer("dealer", houseMoney)) {}
-void BJGame::addPlayer(const std::shared_ptr<BJPlayer>& p) { players.insert(p); }
-void BJGame::removePlayer(const std::shared_ptr<BJPlayer>& p) {
+Game::Game(int houseMoney) : dealer(BJDealer("dealer", houseMoney)) {}
+void Game::addPlayer(const std::shared_ptr<Player>& p) { players.insert(p); }
+void Game::removePlayer(const std::shared_ptr<Player>& p) {
   auto it = players.find(p);
   if (it != players.end()) {
     players.erase(it);
@@ -35,8 +35,8 @@ void BJGame::removePlayer(const std::shared_ptr<BJPlayer>& p) {
     throw std::runtime_error(msg);
   }
 }
-int BJGame::numPlayers() { return static_cast<int>(players.size()); }
-float BJGame::evaluateScoreFactor(int playerScore, int dealerScore) {
+int Game::numPlayers() { return static_cast<int>(players.size()); }
+float Game::evaluateScoreFactor(int playerScore, int dealerScore) {
   if (playerScore == dealerScore) {
     return 0;
   } else if (playerScore == 21) {
@@ -46,4 +46,4 @@ float BJGame::evaluateScoreFactor(int playerScore, int dealerScore) {
   }
   return -1;
 }
-int BJGame::getHouseMoney() { return dealer.getCash(); }
+int Game::getHouseMoney() { return dealer.getCash(); }

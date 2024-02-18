@@ -1,19 +1,19 @@
-#include "bj_game.h"
+#include "game.h"
 
 #include "gtest/gtest.h"
 
 /**
  * Concrete BJPlayer just for testing. Careful player always bets 1 and never hits.
  */
-class BJCarefulPlayer : public BJPlayer {
+class BJCarefulPlayer : public Player {
  public:
-  BJCarefulPlayer(const std::string& usr, int cash) : BJPlayer(usr, cash) {}
+  BJCarefulPlayer(const std::string& usr, int cash) : Player(usr, cash) {}
   void placeBet() override { bet = 2; }
   bool hit() override { return false; }
 };
 
 TEST(BJGameTest, AddAndRemovePlayer) {
-  BJGame game;
+  Game game;
   auto p = std::make_shared<BJCarefulPlayer>("username", 10);
 
   game.addPlayer(p);
@@ -24,7 +24,7 @@ TEST(BJGameTest, AddAndRemovePlayer) {
 }
 
 TEST(BJGameTest, PlayRound) {
-  BJGame game;
+  Game game;
   game.addPlayer(std::make_shared<BJCarefulPlayer>("username", 10));
   EXPECT_EQ(game.numPlayers(), 1);
   int initialMoney = game.getHouseMoney();

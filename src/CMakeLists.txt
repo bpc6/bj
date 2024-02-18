@@ -1,8 +1,8 @@
 set(CARDGAME_SOURCES
         card.cpp
         deck.cpp
-        bj_game.cpp
-        bj_player.cpp
+        game.cpp
+        player.cpp
         bj_cli_player.cpp
 )
 

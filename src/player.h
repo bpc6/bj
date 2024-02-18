@@ -1,17 +1,17 @@
-#ifndef BLACKJACK_BJ_PLAYER_H
-#define BLACKJACK_BJ_PLAYER_H
+#ifndef BLACKJACK_PLAYER_H
+#define BLACKJACK_PLAYER_H
 #include <vector>
 
 #include "card.h"
 #include "deck.h"
 
-class BJPlayer {
+class Player {
   static const int MAX_SCORE = 21;
   std::vector<Card> cards;
   int aceCount = 0;
 
   void updateScore(int val);
-  bool operator<(const BJPlayer& rhs) const;
+  bool operator<(const Player& rhs) const;
 
  protected:
   std::string username;
@@ -20,7 +20,7 @@ class BJPlayer {
   int cash = 0;
 
  public:
-  BJPlayer(std::string usr, int cash);
+  Player(std::string usr, int cash);
   void takeCard(const Card& c);
 
   virtual void placeBet() = 0;
@@ -33,4 +33,4 @@ class BJPlayer {
   std::string getUsername();
 };
 
-#endif  // BLACKJACK_BJ_PLAYER_H
+#endif  // BLACKJACK_PLAYER_H

@@ -1,10 +1,10 @@
 #include <iostream>
 
 #include "bj_cli_player.h"
-#include "bj_game.h"
+#include "game.h"
 
 int main() {
-  BJGame bj;
+  Game bj;
   bj.addPlayer(std::make_shared<BJCLIPlayer>());
   bj.playGame();
 
