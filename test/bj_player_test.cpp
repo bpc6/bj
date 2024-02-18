@@ -1,18 +1,17 @@
-#include "bj_player.h"
-
 #include "card.h"
 #include "gtest/gtest.h"
+#include "player.h"
 
 /**
  * BJNHitPlayer hits N times then stays.
  */
-class BJNHitPlayer : public BJPlayer {
+class BJNHitPlayer : public Player {
   int maxHits;
   int numHits = 0;
 
  public:
   BJNHitPlayer(const std::string& usr, int cash, int maxHits)
-      : BJPlayer(usr, cash), maxHits(maxHits) {}
+      : Player(usr, cash), maxHits(maxHits) {}
   void placeBet() override { bet = 2; }
   bool hit() override { return numHits++ < maxHits; }
 };
