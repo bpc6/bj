@@ -9,7 +9,6 @@ include_directories (${BLACKJACK_SOURCE_DIR}/src)
 add_executable (Tests main_test.cpp
         deck_test.cpp
         bj_player_test.cpp
-        game_test.cpp
         bj_game_test.cpp
 )
 target_link_libraries (Tests Cardgame gtest_main)

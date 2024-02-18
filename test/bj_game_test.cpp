@@ -22,3 +22,13 @@ TEST(BJGameTest, AddAndRemovePlayer) {
   game.removePlayer(p);
   EXPECT_EQ(game.numPlayers(), 0);
 }
+
+TEST(BJGameTest, PlayRound) {
+  BJGame game;
+  game.addPlayer(std::make_shared<BJCarefulPlayer>("username", 10));
+  EXPECT_EQ(game.numPlayers(), 1);
+  int initialMoney = game.getHouseMoney();
+
+  game.playRound();
+  EXPECT_NE(game.getHouseMoney(), initialMoney);
+}

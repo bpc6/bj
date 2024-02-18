@@ -4,22 +4,23 @@
 
 #include "card.h"
 #include "deck.h"
-#include "player.h"
 
-class BJPlayer : public Player {
+class BJPlayer {
   static const int MAX_SCORE = 21;
   std::vector<Card> cards;
   int aceCount = 0;
 
   void updateScore(int val);
+  bool operator<(const BJPlayer& rhs) const;
 
  protected:
+  std::string username;
   int bet = 0;
   int score = 0;
   int cash = 0;
 
  public:
-  BJPlayer(const std::string& usr, int cash);
+  BJPlayer(std::string usr, int cash);
   void takeCard(const Card& c);
 
   virtual void placeBet() = 0;
@@ -29,6 +30,7 @@ class BJPlayer : public Player {
   [[nodiscard]] int getScore() const;
   int playRound(Deck& deck);
   [[nodiscard]] int getCash() const;
+  std::string getUsername();
 };
 
 #endif  // BLACKJACK_BJ_PLAYER_H

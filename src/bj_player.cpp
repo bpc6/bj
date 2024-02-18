@@ -1,6 +1,8 @@
 #include "bj_player.h"
 
-BJPlayer::BJPlayer(const std::string& usr, int cash) : Player(usr), cash(cash) {}
+#include <utility>
+
+BJPlayer::BJPlayer(std::string usr, int cash) : username(std::move(usr)), cash(cash) {}
 
 void BJPlayer::takeCard(const Card& c) {
   updateScore(c.getValue());
@@ -36,3 +38,6 @@ int BJPlayer::playRound(Deck& deck) {
 }
 int BJPlayer::getCash() const { return cash; }
 void BJPlayer::resetBet() { bet = 0; }
+
+bool BJPlayer::operator<(const BJPlayer& rhs) const { return this->username < rhs.username; }
+std::string BJPlayer::getUsername() { return username; }

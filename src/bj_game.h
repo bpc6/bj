@@ -1,11 +1,12 @@
 #ifndef BLACKJACK_BJ_GAME_H
 #define BLACKJACK_BJ_GAME_H
+#include <memory>
+#include <set>
 
 #include "bj_player.h"
 #include "deck.h"
-#include "game.h"
 
-class BJGame : public Game {
+class BJGame {
   /**
    * Private class BJDealer is a BJPlayer who follows the dealer's rules
    */
@@ -25,7 +26,7 @@ class BJGame : public Game {
   explicit BJGame(int houseMoney = 0);
   void addPlayer(const std::shared_ptr<BJPlayer>& p);
   void removePlayer(const std::shared_ptr<BJPlayer>& p);
-  void playGame() override;
+  int numPlayers();
   void playRound();
   int getHouseMoney();
 };
