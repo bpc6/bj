@@ -3,7 +3,7 @@ set(CARDGAME_SOURCES
         deck.cpp
         game.cpp
         player.cpp
-        bj_cli_player.cpp
+        cli_player.cpp
 )
 
 add_library(Cardgame ${CARDGAME_SOURCES})
